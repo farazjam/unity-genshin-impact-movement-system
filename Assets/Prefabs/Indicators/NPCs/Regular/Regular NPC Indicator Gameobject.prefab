@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5586790272862725810, guid: 190e5faae81692b46bf189f6d084ba70, type: 3}
+      propertyPath: ignoreIndicatorRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586790272862725810, guid: 190e5faae81692b46bf189f6d084ba70, type: 3}
       propertyPath: Prefabs.IndicatorPrefab
       value: 
       objectReference: {fileID: 2579543605685626203, guid: 425c314cee5631d4fa820d23b0f720ad, type: 3}
