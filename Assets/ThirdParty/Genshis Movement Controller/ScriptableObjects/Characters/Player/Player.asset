@@ -73,13 +73,13 @@ MonoBehaviour:
       <RecenteringTime>k__BackingField: -1
     - <MinimumAngle>k__BackingField: 80
       <MaximumAngle>k__BackingField: 90
-      <WaitTime>k__BackingField: 0
-      <RecenteringTime>k__BackingField: 0.3
+      <WaitTime>k__BackingField: -1
+      <RecenteringTime>k__BackingField: -1
     <BackwardsCameraRecenteringData>k__BackingField:
     - <MinimumAngle>k__BackingField: 80
       <MaximumAngle>k__BackingField: 90
-      <WaitTime>k__BackingField: 0
-      <RecenteringTime>k__BackingField: 0.5
+      <WaitTime>k__BackingField: -1
+      <RecenteringTime>k__BackingField: -1
     <BaseRotationData>k__BackingField:
       <TargetRotationReachTime>k__BackingField: {x: 0, y: 0.14, z: 0}
     <IdleData>k__BackingField:
