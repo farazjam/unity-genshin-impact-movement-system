@@ -6,17 +6,19 @@ using UnityEngine.Assertions;
 
 public class EntityCull : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private List<MeshRenderer> _meshRenderers;
     [SerializeField] private LayerMask _rendererLayerMask;
     [SerializeField] private BoxCollider _collider;
     [SerializeField] private HUDNavigationElement _HNSIndicator;
 
     private void Start()
     {
-        Assert.IsNotNull(_meshRenderer);
+        Assert.IsNotNull(_meshRenderers);
+        _meshRenderers.ForEach(mesh => Assert.IsNotNull(mesh));
         Assert.IsNotNull(_collider);
         _collider.isTrigger = true;
-        _meshRenderer.enabled = _HNSIndicator.enabled = false;
+        _HNSIndicator.enabled = false;
+        _meshRenderers.ForEach(mesh => mesh.enabled = false);
     }
 
     private void OnTriggerEnter(Collider other) => Render(other.gameObject, true);
@@ -25,11 +27,10 @@ public class EntityCull : MonoBehaviour
 
     private void Render(GameObject gameObject, bool value)
     {
-        if (!IsValidLayer(gameObject) ||
-            _meshRenderer.enabled == value) return;
-        _meshRenderer.enabled = value;
+        if (!IsValidLayer(gameObject)) return;
+        _meshRenderers.ForEach(mesh => mesh.enabled = value);
 
-        if(_HNSIndicator != null)
+        if (_HNSIndicator != null)
             _HNSIndicator.enabled = value;
     }
 
