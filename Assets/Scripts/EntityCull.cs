@@ -1,3 +1,4 @@
+using SickscoreGames.HUDNavigationSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,14 @@ public class EntityCull : MonoBehaviour
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private LayerMask _rendererLayerMask;
     [SerializeField] private BoxCollider _collider;
+    [SerializeField] private HUDNavigationElement _HNSIndicator;
 
     private void Start()
     {
         Assert.IsNotNull(_meshRenderer);
         Assert.IsNotNull(_collider);
         _collider.isTrigger = true;
-        _meshRenderer.enabled = false;
+        _meshRenderer.enabled = _HNSIndicator.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other) => Render(other.gameObject, true);
@@ -26,6 +28,9 @@ public class EntityCull : MonoBehaviour
         if (!IsValidLayer(gameObject) ||
             _meshRenderer.enabled == value) return;
         _meshRenderer.enabled = value;
+
+        if(_HNSIndicator != null)
+            _HNSIndicator.enabled = value;
     }
 
     private bool IsValidLayer(GameObject gameObject)

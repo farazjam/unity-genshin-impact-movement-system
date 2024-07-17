@@ -14,6 +14,7 @@ public class PlayerToEntityCull : MonoBehaviour
     {
         Assert.IsNotNull(_collider);
         _collider.radius = _radius;
+        _collider.center = Vector3.forward * (_radius / 2);
         _collider.isTrigger = true;
     }
 
@@ -21,7 +22,7 @@ public class PlayerToEntityCull : MonoBehaviour
     {
         if (!_drawGizmo) return;
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, _radius);
+        Gizmos.DrawSphere(transform.position + transform.forward * (_radius/2), _radius);
     }
 
     /*private void Cast()
